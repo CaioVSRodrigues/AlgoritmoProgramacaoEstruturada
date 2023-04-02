@@ -12,9 +12,6 @@ scanf("%s", primeiroNome);
 printf("Digite o Segundo nome: ");
 scanf("%s", segundoNome);
 
- strlen(primeiroNome);
- strlen(segundoNome);
-
 
 if(strlen(primeiroNome) == strlen(segundoNome)){
   printf("Mesma quantidade de caracteres!")
