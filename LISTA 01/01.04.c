@@ -6,9 +6,10 @@ int main(){
 
   printf("Digite um numero: ");
     scanf("%d", &a);
-
+ 
   printf("Digite outro numero: ");
     scanf("%d", &b);
+
 
 soma = a + b;
 
