@@ -6,8 +6,8 @@ int main(){
 int numeroInterio;
 float numeroRealFloat;
 double numeroRealDouble;
-char umaLetra;
 char umaString[100];
+char umaLetra;
 
 
 printf("Digite um numero Inteiro: ");
@@ -16,6 +16,9 @@ printf("Digite um numero real Float: ");
  scanf("%f", &numeroRealFloat);
 printf("Digite um numero real Double: ");
   scanf("%lf", &numeroRealDouble);
+
+  fflush(stdin);
+  
 printf("Digite uma letra: ");
   scanf("%c", &umaLetra);
 printf("\nDigite uma palavra: ");
