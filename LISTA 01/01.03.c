@@ -18,10 +18,10 @@ printf("Digite um numero real Double: ");
   scanf("%lf", &numeroRealDouble);
 
   fflush(stdin);
-  
+
 printf("Digite uma letra: ");
   scanf("%c", &umaLetra);
-printf("\nDigite uma palavra: ");
+printf("Digite uma palavra: ");
   scanf("%s", &umaString);
 
 printf("--------------------");
