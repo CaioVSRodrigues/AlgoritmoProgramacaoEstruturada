@@ -1,8 +1,8 @@
 
 #include<stdio.h>
 
-int convertTempCelsius(int graus){
-  int convert;
+float convertTempCelsius(float graus){
+  float convert;
   convert = (9 * graus / 5) + 32;
   return (convert);
 
@@ -12,14 +12,14 @@ int convertTempCelsius(int graus){
 
 int main(){
 
-    int graus, convert;
+    float graus, convert;
 
     printf("Digite quantos graus deseja converter de Celsius para Fah: ");
-      scanf("%d", &graus);
+      scanf("%f", &graus);
 
   convert = convertTempCelsius(graus);
 
-  printf("O resultado da sua conversao e de: %d", convert);
+  printf("O resultado da sua conversao e de: %f", convert);
 
   
   
