@@ -10,8 +10,7 @@ do{
   printf("Digite um numero inteiro: ");
   scanf("%d", &numeroInteiro);
 
-}while(numeroInteiro > 0);
-
+  
 if(numeroInteiro == 0){
   maiorNumero = numeroInteiro;
   menorNumero = numeroInteiro;
@@ -20,6 +19,9 @@ if(numeroInteiro == 0){
 }else if(numeroInteiro < maiorNumero){
   menorNumero = numeroInteiro;
 }
+
+}while(numeroInteiro > 0);
+
 
 printf("Menor valor: %d", menorNumero);
 printf("\nMaior valor: %d", maiorNumero);

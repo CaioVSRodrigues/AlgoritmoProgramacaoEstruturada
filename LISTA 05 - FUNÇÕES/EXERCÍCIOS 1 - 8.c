@@ -9,7 +9,7 @@ float calcularCelsiusParaFahrenheit(float tempC){
 float calcularFahrenheitParaCelsius(float tempF){
 	int result;
 	result = (tempF - 32) * 5.0 / 9.0;	
-	return result;	
+	return result;	  
 }
 
 float calcularCelsiusParaKelvin(float tempC){
