@@ -2,7 +2,7 @@
 #include<locale.h>
 #include<string.h>
 
----- INCOMPLETA --- 
+
 
 
 int main (){
@@ -18,8 +18,9 @@ printf("--------------------\n");
     char senha[15] = "123";
     char senha1[15];        
     int login_efetuado = 0; 
-    int opcao, codigo;
+    int opcao, quantidade, continuar = 1;;
     char novoProduto;
+    float total = 0;
 
     while(!login_efetuado){
         printf("Digite o Login: ");
@@ -37,58 +38,44 @@ printf("--------------------\n");
     }
 
 
-    printf("-- Selecione a opcao desejada --\n");
-    printf(" - 1 - Promocoes\n");
-    printf(" - 2 - Visualizar produtos\n");
-    printf(" - 3 - Realizar Compra\n");
-    printf(" - 4 - Ver carrinho\n");
-      scanf("%d", &opcao);
+    while (continuar) {
+        printf("\n------- Menu de Frutas ------\n");
+        printf("1 - Abacaxi - R$ 5,00 a unidade\n");
+        printf("2 - Maca - R$ 1,00 a unidade\n");
+        printf("3 - Pera - R$ 4,00 a unidade\n");
+        printf("4 - Finalizar Compra!\n");
+        printf("\nDigite a opcao desejada: ");
+        scanf("%d", &opcao);
 
-    switch(opcao){
-      case 1: {
-      printf("------- PROMOCOES --------\n");
-      printf("ABACAXI - 5,00 a unidade\n"); 
-      printf("MACA - 1,00 a unidade\n");
-      printf("PERA - 4,00 a unidade\n");
-
-      break;
-      }
-      case 2: {
-        printf("------- PRODUTOS --------\n");
-      printf("ABACAXI - 5,00 a unidade\n"); 
-      printf("MACA - 1,00 a unidade\n");
-      printf("PERA - 4,00 a unidade\n");
-      printf("BANANA - 2,00 a unidade\n");
-      printf("ABACATE - 3,00 a unidade\n");
-      printf("UVA - 2,30 a unidade\n");
-      printf("PERA - 4,00 a unidade\n");
-      printf("KIWI - 6,00 a unidade\n");
-      break;
-      }
-      case 3: {
-         
-    printf ("Deseja adicionar um novo produto ao carrinho? \n");
-      gets(novoProduto);
-
-
-
-    if(novoProduto == "s"){
-
-    printf("Digite o codigo do produto que deseja adicionar ao carrinho: \n");
-         scanf ("%d", &codigo);
+        switch (opcao) {
+            case 1:
+                printf("Quantidade: ");
+                scanf("%d", &quantidade);
+                total += 5.0 * quantidade;
+                printf("%d unidade(s) acrescentadas com sucesso.\n", quantidade);
+                break;
+            case 2:
+                printf("Quantidade: ");
+                scanf("%d", &quantidade);
+                total += 1.0 * quantidade;
+                printf("%d unidade(s) acrescentadas com sucesso.\n", quantidade);
+                break;
+            case 3:
+                printf("Quantidade: ");
+                scanf("%d", &quantidade);
+                total += 4.0 * quantidade;
+                printf("%d unidade(s) acrescentadas com sucesso.\n", quantidade);
+                break;
+            case 4:
+                continuar = 0;
+                break;
+            default:
+                printf("Opcao invalida.\n");
+                break;
+        }
     }
 
-        
+    printf("\nValor Total: R$ %.2f\n", total);
 
-
-     
-        
-  
-
-      }
-    }
-
-
-
-
+    return 0;
 }
