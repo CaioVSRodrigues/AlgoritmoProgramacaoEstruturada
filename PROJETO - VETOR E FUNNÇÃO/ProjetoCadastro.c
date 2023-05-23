@@ -119,6 +119,7 @@ void adicionarUsuario() {
     printf("\nUsuario adicionado com sucesso. ID: %d\n", id);
 }
 
+
 void imprimirUsuario(int indice) {
     printf("\n---- Usuario ID: %d ----\n", ids[indice]);
     printf("Nome: %s\n", nomes[indice]);
@@ -136,7 +137,6 @@ void imprimirUsuarios() {
         imprimirUsuario(i);
     }
 }
-
 
 void buscarUsuarioPorEmail(const char* email) {
     int encontrado = 0;
@@ -218,6 +218,7 @@ void editarUsuario(int id) {
     printf("\nUsuario editado com sucesso. ID: %d\n", id);
 }
 
+
 void excluirUsuario(int id) {
     int indice = -1;
     for (int i = 0; i < totalUsuarios; i++) {
@@ -245,4 +246,17 @@ void excluirUsuario(int id) {
 
     totalUsuarios--;
     printf("Usuario com ID %d excluido com sucesso.\n", id);
+}
+
+
+void exibirMenu() {
+    printf("----- CADASTRO UCB -----\n");
+    printf("1. Adicionar Usuario\n");
+    printf("2. Editar Usuario\n");
+    printf("3. Excluir Usuario\n");
+    printf("4. Buscar Usuario por Email\n");
+    printf("5. Imprimir Todos os Usuarios\n");
+    printf("6. Sair\n");
+    printf("------------------------\n");
+    printf("Digite a opcao desejada: ");
 }
