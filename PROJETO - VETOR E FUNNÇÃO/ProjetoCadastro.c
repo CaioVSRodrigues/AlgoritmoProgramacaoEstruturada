@@ -204,7 +204,7 @@ void editarUsuario(int id) {
     do {
         printf("Altura (em metros) [%.2f]: ", alturas[indice]);
         scanf("%f", &altura);
-        getchar();  // Limpa o buffer do teclado
+        getchar();  
         if (!validarAltura(altura)) {
             printf("Altura invalida. Por favor, insira uma altura entre 1 e 2 metros.\n");
         }
@@ -259,4 +259,67 @@ void exibirMenu() {
     printf("6. Sair\n");
     printf("------------------------\n");
     printf("Digite a opcao desejada: ");
+}
+
+int main() {
+    int opcao;
+
+    do {
+        exibirMenu();
+        scanf("%d", &opcao);
+        getchar();  
+
+        switch (opcao) {
+            case 1:
+                adicionarUsuario();
+                break;
+            case 2:
+                if (totalUsuarios == 0) {
+                    printf("Nenhum usuario cadastrado.\n");
+                } else {
+                    int id;
+                    printf("Digite o ID do usuário a ser editado: ");
+                    scanf("%d", &id);
+                    getchar();  
+                    editarUsuario(id);
+                }
+                break;
+            case 3:
+                if (totalUsuarios == 0) {
+                    printf("Nenhum usuario cadastrado.\n");
+                } else {
+                    int id;
+                    printf("Digite o ID do usuario a ser excluido: ");
+                    scanf("%d", &id);
+                    getchar();  
+                    excluirUsuario(id);
+                }
+                break;
+            case 4:
+                if (totalUsuarios == 0) {
+                    printf("Nenhum usuario cadastrado.\n");
+                } else {
+                    char email[50];
+                    printf("Digite o email do usuario a ser buscado: ");
+                    fgets(email, sizeof(email), stdin);
+                    email[strlen(email) - 1] = '\0';
+                    buscarUsuarioPorEmail(email);
+                }
+                break;
+            case 5:
+                if (totalUsuarios == 0) {
+                    printf("Nenhum usuario cadastrado.\n");
+                } else {
+                    imprimirUsuarios();
+                }
+                break;
+            case 6:
+                printf("Encerrando o programa.\n");
+                break;
+            default:
+                printf("Opcao invalida. Digite novamente.\n");
+        }
+    } while (opcao != 6);
+
+    return 0;
 }
