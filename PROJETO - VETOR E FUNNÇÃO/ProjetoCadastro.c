@@ -16,7 +16,7 @@ char vacinas[1000][50];
 
 int gerarId() {
     srand(time(NULL));
-    return rand() % 1000 + 7;
+    return rand() % 1000 + 7;  
 }
 
 
