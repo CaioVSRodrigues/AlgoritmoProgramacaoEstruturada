@@ -119,3 +119,67 @@ void adicionarUsuario() {
     printf("\nUsuario adicionado com sucesso. ID: %d\n", id);
 }
 
+
+void editarUsuario(int id) {
+    int indice = -1;
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (ids[i] == id) {
+            indice = i;
+            break;
+        }
+    }
+
+    if (indice == -1) {
+        printf("Usuario com ID %d não encontrado.\n", id);
+        return;
+    }
+
+    printf("\n---- Editar Usuario ----\n");
+
+    printf("Nome completo [%s]: ", nomes[indice]);
+    fgets(nomes[indice], 50, stdin);
+    nomes[indice][strcspn(nomes[indice], "\n")] = '\0';
+
+    char email[50];
+    do {
+        printf("Email [%s]: ", emails[indice]);
+        fgets(email, sizeof(email), stdin);
+        email[strlen(email) - 1] = '\0';
+        if (!validarEmail(email)) {
+            printf("Email invalido. Por favor, insira um email valido.\n");
+        }
+    } while (!validarEmail(email));
+    strcpy(emails[indice], email);
+
+    char sexo[50];
+    do {
+        printf("Sexo (Feminino/Masculino/Indiferente) [%s]: ", sexos[indice]);
+        fgets(sexo, sizeof(sexo), stdin);
+        sexo[strlen(sexo) - 1] = '\0';
+        if (!validarSexo(sexo)) {
+            printf("Sexo invalido. Por favor, insira um sexo valido.\n");
+        }
+    } while (!validarSexo(sexo));
+    strcpy(sexos[indice], sexo);
+
+    printf("Endereco [%s]: ", enderecos[indice]);
+    fgets(enderecos[indice], 100, stdin);
+    enderecos[indice][strcspn(enderecos[indice], "\n")] = '\0';
+
+    float altura;
+    do {
+        printf("Altura (em metros) [%.2f]: ", alturas[indice]);
+        scanf("%f", &altura);
+        getchar();  // Limpa o buffer do teclado
+        if (!validarAltura(altura)) {
+            printf("Altura invalida. Por favor, insira uma altura entre 1 e 2 metros.\n");
+        }
+    } while (!validarAltura(altura));
+    alturas[indice] = altura;
+
+    printf("Vacina [%s]: ", vacinas[indice]);
+    fgets(vacinas[indice], 50, stdin);
+    vacinas[indice][strcspn(vacinas[indice], "\n")] = '\0';
+
+    printf("\nUsuario editado com sucesso. ID: %d\n", id);
+}
