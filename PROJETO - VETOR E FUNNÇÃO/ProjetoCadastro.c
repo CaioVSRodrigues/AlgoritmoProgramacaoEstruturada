@@ -73,3 +73,49 @@ void adicionarUsuario() {
     printf("Nome completo: ");
     fgets(nomes[totalUsuarios], 50, stdin);
     nomes[totalUsuarios][strcspn(nomes[totalUsuarios], "\n")] = '\0';
+
+    char email[50];
+    do {
+        printf("Email: ");
+        fgets(email, sizeof(email), stdin);
+        email[strlen(email) - 1] = '\0';
+        if (!validarEmail(email)) {
+            printf("Email invalido. Por favor, insira um email valido.\n");
+        }
+    } while (!validarEmail(email));
+    strcpy(emails[totalUsuarios], email);
+
+    char sexo[50];
+    do {
+        printf("Sexo (Feminino/Masculino/Indiferente): ");
+        fgets(sexo, sizeof(sexo), stdin);
+        sexo[strlen(sexo) - 1] = '\0';
+        if (!validarSexo(sexo)) {
+            printf("Sexo invalido. Por favor, insira um sexo valido.\n");
+        }
+    } while (!validarSexo(sexo));
+    strcpy(sexos[totalUsuarios], sexo);
+
+    printf("Endereco: ");
+    fgets(enderecos[totalUsuarios], 100, stdin);
+    enderecos[totalUsuarios][strcspn(enderecos[totalUsuarios], "\n")] = '\0';
+
+    float altura;
+    do {
+        printf("Altura (em metros): ");
+        scanf("%f", &altura);
+        getchar();  
+        if (!validarAltura(altura)) {
+            printf("Altura invalida. Por favor, insira uma altura entre 1 e 2 metros.\n");
+        }
+    } while (!validarAltura(altura));
+    alturas[totalUsuarios] = altura;
+
+    printf("Vacina: ");
+    fgets(vacinas[totalUsuarios], 50, stdin);
+    vacinas[totalUsuarios][strcspn(vacinas[totalUsuarios], "\n")] = '\0';
+
+    totalUsuarios++;
+    printf("\nUsuario adicionado com sucesso. ID: %d\n", id);
+}
+
