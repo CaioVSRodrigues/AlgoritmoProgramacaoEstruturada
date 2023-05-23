@@ -183,3 +183,32 @@ void editarUsuario(int id) {
 
     printf("\nUsuario editado com sucesso. ID: %d\n", id);
 }
+
+void excluirUsuario(int id) {
+    int indice = -1;
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (ids[i] == id) {
+            indice = i;
+            break;
+        }
+    }
+
+    if (indice == -1) {
+        printf("Usuario com ID %d nao encontrado.\n", id);
+        return;
+    }
+
+
+    for (int i = indice; i < totalUsuarios - 1; i++) {
+        ids[i] = ids[i + 1];
+        strcpy(nomes[i], nomes[i + 1]);
+        strcpy(emails[i], emails[i + 1]);
+        strcpy(sexos[i], sexos[i + 1]);
+        strcpy(enderecos[i], enderecos[i + 1]);
+        alturas[i] = alturas[i + 1];
+        strcpy(vacinas[i], vacinas[i + 1]);
+    }
+
+    totalUsuarios--;
+    printf("Usuario com ID %d excluido com sucesso.\n", id);
+}
