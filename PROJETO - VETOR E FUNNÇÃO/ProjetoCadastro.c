@@ -119,6 +119,24 @@ void adicionarUsuario() {
     printf("\nUsuario adicionado com sucesso. ID: %d\n", id);
 }
 
+void imprimirUsuario(int indice) {
+    printf("\n---- Usuario ID: %d ----\n", ids[indice]);
+    printf("Nome: %s\n", nomes[indice]);
+    printf("Email: %s\n", emails[indice]);
+    printf("Sexo: %s\n", sexos[indice]);
+    printf("Endereço: %s\n", enderecos[indice]);
+    printf("Altura: %.2f\n", alturas[indice]);
+    printf("Vacina: %s\n", vacinas[indice]);
+}
+
+
+void imprimirUsuarios() {
+    printf("\n---- Lista de Usuarios ----\n");
+    for (int i = 0; i < totalUsuarios; i++) {
+        imprimirUsuario(i);
+    }
+}
+
 
 void buscarUsuarioPorEmail(const char* email) {
     int encontrado = 0;
