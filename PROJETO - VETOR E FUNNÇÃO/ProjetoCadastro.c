@@ -120,6 +120,22 @@ void adicionarUsuario() {
 }
 
 
+void buscarUsuarioPorEmail(const char* email) {
+    int encontrado = 0;
+    printf("\n---- Resultado da Busca ----\n");
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (strcmp(emails[i], email) == 0) {
+            imprimirUsuario(i);
+            encontrado = 1;
+            break;
+        }
+    }
+    if (!encontrado) {
+        printf("Nenhum usuario encontrado com o email: %s\n", email);
+    }
+}
+
+
 void editarUsuario(int id) {
     int indice = -1;
     for (int i = 0; i < totalUsuarios; i++) {
