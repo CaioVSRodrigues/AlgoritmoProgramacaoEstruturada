@@ -3,6 +3,7 @@
 #include <string.h>
 
 typedef struct {
+    int id;
     char nome[100];
     int idade;
 } Usuario;
@@ -16,6 +17,7 @@ Usuario* cadastrarUsuario() {
         return NULL;
     }
 
+    novoUsuario->id = 1; 
     printf("Digite o nome do usuário: ");
     fgets(novoUsuario->nome, sizeof(novoUsuario->nome), stdin);
     novoUsuario->nome[strcspn(novoUsuario->nome, "\n")] = '\0'; 
@@ -43,7 +45,7 @@ void excluirUsuario(Usuario* usuario) {
 void listarUsuarios(Usuario** usuarios, int count) {
     printf("Usuários cadastrados:\n");
     for (int i = 0; i < count; i++) {
-        printf("Usuário %d:\n", i+1);
+        printf("Usuário %d:\n", usuarios[i]->id);
         printf("Nome: %s\n", usuarios[i]->nome);
         printf("Idade: %d\n", usuarios[i]->idade);
         printf("\n");
@@ -53,6 +55,7 @@ void listarUsuarios(Usuario** usuarios, int count) {
 int main() {
     Usuario* usuarios[100]; 
     int count = 0; 
+    int proximoId = 1; 
 
     char opcao;
     do {
@@ -64,15 +67,18 @@ int main() {
         printf("5 - Sair\n");
         printf("Escolha uma opção: ");
         scanf(" %c", &opcao);
+        getchar(); 
+
         printf("\n");
 
         switch (opcao) {
             case '1': {
                 Usuario* novoUsuario = cadastrarUsuario();
                 if (novoUsuario != NULL) {
+                    novoUsuario->id = proximoId++; 
                     usuarios[count] = novoUsuario;
                     count++;
-                    printf("Usuário cadastrado com sucesso!\n");
+                    printf("Usuário cadastrado com sucesso! ID: %d\n", novoUsuario->id);
                 }
                 break;
             }
@@ -80,8 +86,8 @@ int main() {
                 int index;
                 printf("Digite o ID do usuário que deseja editar: ");
                 scanf("%d", &index);
-                if (index >= 0 && index < count) {
-                    editarUsuario(usuarios[index]);
+                if (index >= 1 && index <= count) {
+                    editarUsuario(usuarios[index - 1]);
                     printf("Usuário editado com sucesso!\n");
                 } else {
                     printf("ID de usuário inválido!\n");
@@ -92,9 +98,9 @@ int main() {
                 int index;
                 printf("Digite o ID do usuário que deseja excluir: ");
                 scanf("%d", &index);
-                if (index >= 0 && index < count) {
-                    excluirUsuario(usuarios[index]);
-                    for (int i = index; i < count - 1; i++) {
+                if (index >= 1 && index <= count) {
+                    excluirUsuario(usuarios[index - 1]);
+                    for (int i = index - 1; i < count - 1; i++) {
                         usuarios[i] = usuarios[i + 1];
                     }
                     count--;
